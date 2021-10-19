@@ -27,3 +27,18 @@ char BudgetAplication::chooseOptionFromMainMenu()
 
     return choose;
 }
+
+void BudgetAplication::userRegistration()
+{
+
+}
+
+bool BudgetAplication::userLogIn()
+{
+
+}
+
+void BudgetAplication::changingPasswordOfLoggedInUser()
+{
+
+}

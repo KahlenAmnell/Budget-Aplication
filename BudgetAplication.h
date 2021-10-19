@@ -11,6 +11,9 @@ public:
     BudgetAplication(string nameOFFileWithUsers, string nameOfFileWithIncome, string nameOfFileWithExpense);
     ~BudgetAplication();
     char chooseOptionFromMainMenu();
+    void userRegistration();
+    bool userLogIn();
+    void changingPasswordOfLoggedInUser();
 
 private:
     const string NAME_OF_FILE_WITH_INCOME;
