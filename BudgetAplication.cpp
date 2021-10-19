@@ -22,8 +22,7 @@ char BudgetAplication::chooseOptionFromMainMenu()
     cout << "9. Koniec programu" << endl;
     cout << "---------------------------" << endl;
     cout << "Twoj wybor: ";
-    choose = getchar();
-   // choose = SupportingMethods::enterSing();
+    choose = SupportingMethods::enterSign();
 
     return choose;
 }

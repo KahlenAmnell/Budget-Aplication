@@ -11,7 +11,7 @@ int SupportingMethods::convertStringToInteger(string number)
 char SupportingMethods::enterSign()
 {
     string enter = "";
-    char sign  = {0};
+    char sign;
 
     while (true)
     {
