@@ -8,9 +8,13 @@ using namespace std;
 class BudgetAplication
 {
 public:
+    BudgetAplication(string nameOFFileWithUsers, string nameOfFileWithIncome, string nameOfFileWithExpense);
+    ~BudgetAplication();
+
 
 private:
-
+    const string NAME_OF_FILE_WITH_INCOME;
+    const string NAME_OF_FILE_WITH_EXPENSE;
 };
 
 #endif // BUDGETAPLICATION_H
