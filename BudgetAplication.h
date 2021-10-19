@@ -2,6 +2,7 @@
 #define BUDGETAPLICATION_H
 
 #include <iostream>
+#include "SupportingMethods.h"
 
 using namespace std;
 
