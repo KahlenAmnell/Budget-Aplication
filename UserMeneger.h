@@ -13,8 +13,16 @@ using namespace std;
 class UserMeneger
 {
 public:
+    UserMeneger();
+    void userRegistration();
 
 private:
+    int loggedUserID;
+    vector<User> users;
+
+    User enterNewUserDetails();
+    int fetchNewUserId();
+    bool isLoginAlreadyExist(string login);
 
 };
 

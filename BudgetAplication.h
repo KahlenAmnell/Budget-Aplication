@@ -2,6 +2,7 @@
 #define BUDGETAPLICATION_H
 
 #include <iostream>
+#include "UserMeneger.h"
 #include "SupportingMethods.h"
 
 using namespace std;
@@ -17,6 +18,7 @@ public:
     void changingPasswordOfLoggedInUser();
 
 private:
+    UserMeneger userMeneger;
     const string NAME_OF_FILE_WITH_INCOME;
     const string NAME_OF_FILE_WITH_EXPENSE;
 };
