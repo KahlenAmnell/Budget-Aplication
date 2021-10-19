@@ -18,13 +18,14 @@ public:
     void userLogIn();
     bool isUserAlreadyLogged();
     int getLoggedUserID();
+    void changingPasswordOfLoggedInUser();
 
 private:
     int loggedUserID;
     vector<User> users;
 
     User enterNewUserDetails();
-    int fetchNewUserId();
+    int getNewUserId();
     bool isLoginAlreadyExist(string login);
 
 

@@ -19,7 +19,7 @@ void UserMeneger::userRegistration()
 User UserMeneger::enterNewUserDetails()
 {
     User user;
-    int id = fetchNewUserId();
+    int id = getNewUserId();
     user.setId(id);
 
     cout << "Podaj imię: ";
@@ -38,7 +38,7 @@ User UserMeneger::enterNewUserDetails()
     return user;
 }
 
-int UserMeneger::fetchNewUserId()
+int UserMeneger::getNewUserId()
 {
     if(users.empty() == true)
         return 1;
@@ -107,4 +107,22 @@ bool UserMeneger::isUserAlreadyLogged()
 int UserMeneger::getLoggedUserID()
 {
     return loggedUserID;
+}
+
+void UserMeneger::changingPasswordOfLoggedInUser()
+{
+    string newPassword = "";
+    cout << "Podaj nowe haslo: ";
+    newPassword = SupportingMethods::loadLine();
+
+    for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++)
+    {
+        if (itr -> getId() == loggedUserID)
+        {
+            itr -> setPassword(newPassword);
+            cout << "Haslo zostalo zmienione." << endl << endl;
+            system("pause");
+        }
+    }
+   // plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
 }
