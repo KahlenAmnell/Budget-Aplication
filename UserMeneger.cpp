@@ -58,3 +58,53 @@ bool UserMeneger::isLoginAlreadyExist(string login)
     }
     return false;
 }
+
+void UserMeneger::userLogIn()
+{
+    User user;
+    string login = "", password = "";
+
+    cout << "Podaj login: ";
+    login = SupportingMethods::loadLine();
+
+    vector <User>::iterator itr = users.begin();
+    while (itr != users.end())
+    {
+        if (itr -> getLogin() == login)
+        {
+            for (int numberOfAttemps = 3; numberOfAttemps > 0; numberOfAttemps--)
+            {
+                cout << "Podaj haslo. Pozostalo prob: " << numberOfAttemps << ": ";
+                password = SupportingMethods::loadLine();
+
+                if (itr -> getPassword() == password)
+                {
+                    cout << endl << "Zalogowales sie." << endl << endl;
+                    system("pause");
+                    loggedUserID = itr -> getId();
+                    return;
+                }
+            }
+            cout << "Wprowadzono 3 razy bledne haslo." << endl;
+            system("pause");
+            return;
+        }
+        itr++;
+    }
+    cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
+    system("pause");
+    return;
+}
+
+bool UserMeneger::isUserAlreadyLogged()
+{
+    if(loggedUserID <= 0)
+        return false;
+    else
+        return true;
+}
+
+int UserMeneger::getLoggedUserID()
+{
+    return loggedUserID;
+}

@@ -15,6 +15,9 @@ class UserMeneger
 public:
     UserMeneger();
     void userRegistration();
+    void userLogIn();
+    bool isUserAlreadyLogged();
+    int getLoggedUserID();
 
 private:
     int loggedUserID;
@@ -23,6 +26,7 @@ private:
     User enterNewUserDetails();
     int fetchNewUserId();
     bool isLoginAlreadyExist(string login);
+
 
 };
 

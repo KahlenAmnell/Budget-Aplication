@@ -35,7 +35,12 @@ void BudgetAplication::userRegistration()
 
 bool BudgetAplication::userLogIn()
 {
-
+    userMeneger.userLogIn();
+    if (userMeneger.isUserAlreadyLogged())
+    {
+        //
+    }
+    return userMeneger.isUserAlreadyLogged();
 }
 
 void BudgetAplication::changingPasswordOfLoggedInUser()
