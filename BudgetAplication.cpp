@@ -1,6 +1,7 @@
 #include "BudgetAplication.h"
 
 BudgetAplication::BudgetAplication(string nameOFFileWithUsers, string nameOfFileWithIncome, string nameOfFileWithExpense)
+    :userMeneger()
 {
 
 }
@@ -29,12 +30,17 @@ char BudgetAplication::chooseOptionFromMainMenu()
 
 void BudgetAplication::userRegistration()
 {
-
+    userMeneger.userRegistration();
 }
 
 bool BudgetAplication::userLogIn()
 {
-
+    userMeneger.userLogIn();
+    if (userMeneger.isUserAlreadyLogged())
+    {
+        //
+    }
+    return userMeneger.isUserAlreadyLogged();
 }
 
 void BudgetAplication::changingPasswordOfLoggedInUser()
