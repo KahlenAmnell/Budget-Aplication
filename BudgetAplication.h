@@ -10,7 +10,7 @@ class BudgetAplication
 public:
     BudgetAplication(string nameOFFileWithUsers, string nameOfFileWithIncome, string nameOfFileWithExpense);
     ~BudgetAplication();
-
+    char chooseOptionFromMainMenu();
 
 private:
     const string NAME_OF_FILE_WITH_INCOME;
