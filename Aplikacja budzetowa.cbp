@@ -34,6 +34,8 @@
 		</Compiler>
 		<Unit filename="BudgetAplication.cpp" />
 		<Unit filename="BudgetAplication.h" />
+		<Unit filename="BudgetMeneger.cpp" />
+		<Unit filename="BudgetMeneger.h" />
 		<Unit filename="Markup.cpp" />
 		<Unit filename="Markup.h" />
 		<Unit filename="SupportingMethods.cpp" />
