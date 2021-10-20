@@ -9,9 +9,11 @@ using namespace std;
 class Expense
 {
 public:
+    void setExpenseId(int newExpenseId);
+    int getExpenseId();
 
 private:
-
+    int expenseId;
 };
 
 #endif // EXPENSE_H
