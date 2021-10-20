@@ -40,6 +40,8 @@
 		<Unit filename="SupportingMethods.h" />
 		<Unit filename="User.cpp" />
 		<Unit filename="User.h" />
+		<Unit filename="UserMeneger.cpp" />
+		<Unit filename="UserMeneger.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
