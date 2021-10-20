@@ -34,6 +34,10 @@ int main()
                 break;
             }
         }
+        else
+        {
+            choose = budgetAplication.chooseOptionFromUserMenu();
+        }
      }
 
 
