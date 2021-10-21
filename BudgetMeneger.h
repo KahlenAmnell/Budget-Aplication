@@ -22,7 +22,10 @@ private:
     Incomes enterDetailsOfNewIncome();
     int setDateOfIncomeOrExpense();
     int getTodayDate();
-
+    bool isDateEnteredCorrectly(string userDate);
+    int convertDateFromStringToInteger(string userDate);
+    int howManyDaysInMonth(int month, int year);
+    bool isYearLeap(int year);
 
 };
 

@@ -80,12 +80,14 @@ int BudgetMeneger::setDateOfIncomeOrExpense()
             {
                 cout << "Data: ";
                 userDate = SupportingMethods::loadLine();
-                if(userDate.length() != 10)
-                    cout << "Podana data zostala wpisana nieprawidlowo. Podaj date w formacie: rrrr-mm-dd" << endl;
+                if(isDateEnteredCorrectly(userDate) == false)
+                    {
+                        cout << "Podana data zostala wpisana nieprawidlowo. Podaj date w formacie: rrrr-mm-dd" << endl;
+                    }
                 else
-                    {//sprawdź poprawność daty
-                    //konwersja daty na int
-                    break;
+                    {
+                        date = convertDateFromStringToInteger(userDate);
+                        break;
                     }
             }
             break;
@@ -95,7 +97,6 @@ int BudgetMeneger::setDateOfIncomeOrExpense()
             break;
         }
     }
-
     return date;
 }
 
@@ -118,7 +119,95 @@ int BudgetMeneger::getTodayDate()
     monthStr = month;
     dayStr = day;
     todayDate = yearStr + monthStr + dayStr;
-    cout << "Dzisiejsza data to: " << yearStr << "-" << monthStr << "-" << dayStr << endl;
     intTodayDate = SupportingMethods::convertStringToInteger(todayDate);
     return intTodayDate;
+}
+
+bool BudgetMeneger::isDateEnteredCorrectly(string userDate)
+{
+    int intYear, intMonth, intDay;
+    char dateSign;
+    string year, month, day;
+    if (userDate.length()!=10 )
+    {
+        return false;
+    }
+    if(convertDateFromStringToInteger(userDate)>getTodayDate())
+    {
+        return false;
+    }
+    for(int i=0; i<userDate.length(); i++)
+    {
+        dateSign = userDate[i];
+        if((i == 4) || (i == 7))
+        {
+            if(dateSign != '-')
+                return false;
+        }
+        else
+        {
+            if((dateSign<'0') || (dateSign>'9'))
+                return false;
+            else if(i<4)
+                year += userDate[i];
+            else if((i>4) && (i<7))
+                month += userDate[i];
+            else
+                day += userDate[i];
+        }
+    }
+    intYear = SupportingMethods::convertStringToInteger(year);
+    if(intYear<2000)
+        return false;
+    intMonth = SupportingMethods::convertStringToInteger(month);
+    if(intMonth>12)
+        return false;
+    intDay = SupportingMethods::convertStringToInteger(day);
+    if(intDay > howManyDaysInMonth(intMonth, intYear))
+        return false;
+
+    return true;
+}
+
+
+int BudgetMeneger::convertDateFromStringToInteger(string userDate)
+{
+    int date = 0;
+    string dateWithoutDashes;
+
+    for(int i=0; i<userDate.length(); i++)
+    {
+        if(userDate[i] != '-')
+            dateWithoutDashes += userDate[i];
+    }
+    date = SupportingMethods::convertStringToInteger(dateWithoutDashes);
+    return date;
+}
+
+int BudgetMeneger::howManyDaysInMonth(int month, int year)
+{
+    int numberOfDays;
+    if (month == 4 || month == 6 || month == 9 || month == 11)
+    {
+        numberOfDays = 30;
+    }
+    else if (month == 2)
+    {
+        if (isYearLeap(year))
+            numberOfDays = 29;
+        else
+            numberOfDays = 28;
+    }
+    else
+    {
+        numberOfDays = 31;
+    }
+    return numberOfDays;
+}
+
+bool BudgetMeneger::isYearLeap(int year)
+{
+    if(((year % 4) == 0 && (year % 100)) != 0 || (year % 400) == 0)
+        return true;
+    return false;
 }
