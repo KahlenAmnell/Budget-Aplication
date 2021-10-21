@@ -19,6 +19,7 @@ public:
     void changingPasswordOfLoggedInUser();
 
     char chooseOptionFromUserMenu();
+    void addIncomes();
 
 private:
     UserMeneger userMeneger;

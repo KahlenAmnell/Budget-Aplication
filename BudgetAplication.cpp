@@ -53,3 +53,16 @@ char BudgetAplication::chooseOptionFromUserMenu()
 {
     return budgetMeneger->chooseOptionFromUserMenu();
 }
+
+void BudgetAplication::addIncomes()
+{
+    if (userMeneger.isUserAlreadyLogged())
+    {
+        budgetMeneger->addIncomes();
+    }
+    else
+    {
+        cout << "Aby dodac przychod, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
+}

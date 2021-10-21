@@ -37,6 +37,19 @@ int main()
         else
         {
             choose = budgetAplication.chooseOptionFromUserMenu();
+
+            switch(choose)
+            {
+            case '1':
+                budgetAplication.addIncomes();
+                break;
+            case '7':
+                isLogged = false;
+                break;
+            default:
+                cout << "Nie ma takiej opcji w menu. Spróbuj ponownie" << endl;
+                break;
+            }
         }
      }
 
