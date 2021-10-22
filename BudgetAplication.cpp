@@ -3,12 +3,13 @@
 BudgetAplication::BudgetAplication(string nameOFFileWithUsers, string nameOfFileWithIncome, string nameOfFileWithExpense)
     :userMeneger()
 {
-
+    budgetMeneger = NULL;
 }
 
 BudgetAplication::~BudgetAplication()
 {
-
+    delete budgetMeneger;
+    budgetMeneger = NULL;
 }
 
 char BudgetAplication::chooseOptionFromMainMenu()
@@ -38,7 +39,7 @@ bool BudgetAplication::userLogIn()
     userMeneger.userLogIn();
     if (userMeneger.isUserAlreadyLogged())
     {
-        //
+        budgetMeneger = new BudgetMeneger();
     }
     return userMeneger.isUserAlreadyLogged();
 }
@@ -46,4 +47,35 @@ bool BudgetAplication::userLogIn()
 void BudgetAplication::changingPasswordOfLoggedInUser()
 {
 
+}
+
+char BudgetAplication::chooseOptionFromUserMenu()
+{
+    return budgetMeneger->chooseOptionFromUserMenu();
+}
+
+void BudgetAplication::addIncomes()
+{
+    if (userMeneger.isUserAlreadyLogged())
+    {
+        budgetMeneger->addIncomes();
+    }
+    else
+    {
+        cout << "Aby dodac przychod, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
+}
+
+void BudgetAplication::addExpense()
+{
+    if (userMeneger.isUserAlreadyLogged())
+    {
+        budgetMeneger->addExpense();
+    }
+    else
+    {
+        cout << "Aby dodac wydatek, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
 }

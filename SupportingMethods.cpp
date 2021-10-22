@@ -1,11 +1,11 @@
 #include "SupportingMethods.h"
 
-int SupportingMethods::convertStringToInteger(string number)
+int SupportingMethods::convertStringToNumber(string number)
 {
-    int intNumber;
-    istringstream iss(number);
-    iss >> intNumber;
-    return intNumber;
+    int valor;
+    stringstream ss(number);
+    ss >> valor;
+    return valor;
 }
 
 char SupportingMethods::enterSign()

@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class Expense
+class Expense: public Finances
 {
 public:
     void setExpenseId(int newExpenseId);
