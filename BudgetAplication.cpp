@@ -66,3 +66,16 @@ void BudgetAplication::addIncomes()
         system("pause");
     }
 }
+
+void BudgetAplication::addExpense()
+{
+    if (userMeneger.isUserAlreadyLogged())
+    {
+        budgetMeneger->addExpense();
+    }
+    else
+    {
+        cout << "Aby dodac wydatek, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
+}

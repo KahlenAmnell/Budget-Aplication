@@ -1,5 +1,6 @@
 #ifndef FINANCES_H
 #define FINANCES_H
+//#define _GLIBCXX_USE_CXX11_ABI 0
 
 #include <iostream>
 
@@ -10,16 +11,19 @@ class Finances
 public:
     void setUserId(int newUserId);
     void setDate(int newDate);
-    void setAmount(int newAmount);
+    void setAmount(float newAmount);
+    void setName(string newName);
 
     int getUserId();
     int getDate();
-    int getAmount();
+    float getAmount();
+    string getName();
 
 private:
     int userId;
     int date;
-    int amount;
+    float amount;
+    string name;
 };
 
 #endif // FINANCES_H

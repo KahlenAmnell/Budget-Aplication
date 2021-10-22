@@ -1,3 +1,4 @@
+//#define _GLIBCXX_USE_CXX11_ABI 0
 #include <iostream>
 
 #include "Markup.h"
@@ -43,6 +44,8 @@ int main()
             case '1':
                 budgetAplication.addIncomes();
                 break;
+            case '2':
+                budgetAplication.addExpense();
             case '7':
                 isLogged = false;
                 break;

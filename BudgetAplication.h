@@ -1,5 +1,6 @@
 #ifndef BUDGETAPLICATION_H
 #define BUDGETAPLICATION_H
+//#define _GLIBCXX_USE_CXX11_ABI 0
 
 #include <iostream>
 #include "UserMeneger.h"
@@ -20,6 +21,7 @@ public:
 
     char chooseOptionFromUserMenu();
     void addIncomes();
+    void addExpense();
 
 private:
     UserMeneger userMeneger;

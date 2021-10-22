@@ -10,9 +10,14 @@ void Finances::setDate(int newDate)
     date = newDate;
 }
 
-void Finances::setAmount(int newAmount)
+void Finances::setAmount(float newAmount)
 {
     amount = newAmount;
+}
+
+void Finances::setName(string newName)
+{
+    name = newName;
 }
 
 int Finances::getUserId()
@@ -25,7 +30,12 @@ int Finances::getDate()
     return date;
 }
 
-int Finances::getAmount()
+float Finances::getAmount()
 {
     return amount;
+}
+
+string Finances::getName()
+{
+    return name;
 }

@@ -40,18 +40,53 @@ void BudgetMeneger::addIncomes()
 Incomes BudgetMeneger::enterDetailsOfNewIncome()
 {
     Incomes income;
+    string name;
 
     //get last income id from file
 
     income.setUserId(LOGGED_USER_ID);
-
     income.setDate(setDateOfIncomeOrExpense());
 
-    //ustawianie nazwy
-
-    // ustawianie kwoty
+    cout << "Podaj nazwe: ";
+    name = SupportingMethods::loadLine();
+    income.setName(name);
+    income.setAmount(enterAmount());
 
     return income;
+}
+
+void BudgetMeneger::addExpense()
+{
+    Expense expense;
+
+    system ("cls");
+    cout << " >>> DODAWANIE NOWEGO WYDATKU <<<" << endl << endl;
+    expense = enterDetailsOfNewExpsense();
+
+    expences.push_back(expense);
+
+    //saving to file
+
+    system("pause");
+}
+
+
+Expense BudgetMeneger::enterDetailsOfNewExpsense()
+{
+    Expense expense;
+    string name;
+
+    //get last expense id from file
+
+    expense.setUserId(LOGGED_USER_ID);
+    expense.setDate(setDateOfIncomeOrExpense());
+
+    cout << "Podaj nazwe: ";
+    name = SupportingMethods::loadLine();
+    expense.setName(name);
+    expense.setAmount(enterAmount());
+
+    return expense;
 }
 
 int BudgetMeneger::setDateOfIncomeOrExpense()
@@ -119,7 +154,7 @@ int BudgetMeneger::getTodayDate()
     monthStr = month;
     dayStr = day;
     todayDate = yearStr + monthStr + dayStr;
-    intTodayDate = SupportingMethods::convertStringToInteger(todayDate);
+    intTodayDate = SupportingMethods::convertStringToNumber(todayDate);
     return intTodayDate;
 }
 
@@ -156,13 +191,13 @@ bool BudgetMeneger::isDateEnteredCorrectly(string userDate)
                 day += userDate[i];
         }
     }
-    intYear = SupportingMethods::convertStringToInteger(year);
+    intYear = SupportingMethods::convertStringToNumber(year);
     if(intYear<2000)
         return false;
-    intMonth = SupportingMethods::convertStringToInteger(month);
+    intMonth = SupportingMethods::convertStringToNumber(month);
     if(intMonth>12)
         return false;
-    intDay = SupportingMethods::convertStringToInteger(day);
+    intDay = SupportingMethods::convertStringToNumber(day);
     if(intDay > howManyDaysInMonth(intMonth, intYear))
         return false;
 
@@ -180,7 +215,7 @@ int BudgetMeneger::convertDateFromStringToInteger(string userDate)
         if(userDate[i] != '-')
             dateWithoutDashes += userDate[i];
     }
-    date = SupportingMethods::convertStringToInteger(dateWithoutDashes);
+    date = SupportingMethods::convertStringToNumber(dateWithoutDashes);
     return date;
 }
 
@@ -211,3 +246,27 @@ bool BudgetMeneger::isYearLeap(int year)
         return true;
     return false;
 }
+
+float BudgetMeneger::enterAmount()
+{
+    string amount;
+    float floatAmount;
+    char amountSign;
+
+    cout << "Podaj kwote: ";
+    amount = SupportingMethods::loadLine();
+
+    for(int i=0; i<amount.length(); i++)
+    {
+        amountSign = amount[i];
+        if(amountSign == ',')
+        {
+            amount[i] = '.';
+        }
+    }
+
+    floatAmount = stof(amount);
+
+    return floatAmount;
+}
+
