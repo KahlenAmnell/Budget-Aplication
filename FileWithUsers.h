@@ -9,8 +9,9 @@ using namespace std;
 class FileWithUsers
 {
 public:
-
+    FileWithUsers();
+    void addUserToFile();
 private:
-
+    string nameOfFileWithUsers;
 };
 #endif // FILEWITHUSERS_H
