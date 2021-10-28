@@ -79,3 +79,16 @@ void BudgetAplication::addExpense()
         system("pause");
     }
 }
+
+void BudgetAplication::changePassword()
+{
+    if (userMeneger.isUserAlreadyLogged())
+    {
+        userMeneger.changingPasswordOfLoggedInUser();
+    }
+    else
+    {
+        cout << "Aby zmienic haslo, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
+}

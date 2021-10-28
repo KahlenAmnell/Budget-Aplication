@@ -15,6 +15,7 @@ public:
     FileWithUsers(string nameOfFileWithUsers);
     void addUserToFile(User user);
     vector<User> loadUsersFromFile();
+    void changePasswordInFile(int userId, string newPassword);
 private:
     const string NAME_OF_FILE_WITH_USERS;
     void startTheFile(CMarkup &xml);

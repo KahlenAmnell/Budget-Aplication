@@ -114,6 +114,9 @@ int UserMeneger::getLoggedUserID()
 void UserMeneger::changingPasswordOfLoggedInUser()
 {
     string newPassword = "";
+
+    system("cls");
+    cout << " >>> ZMIANA HASLA <<<" << endl << endl;
     cout << "Podaj nowe haslo: ";
     newPassword = SupportingMethods::loadLine();
 
@@ -126,5 +129,5 @@ void UserMeneger::changingPasswordOfLoggedInUser()
             system("pause");
         }
     }
-   // plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
+   fileWithUsers.changePasswordInFile(loggedUserID, newPassword);
 }

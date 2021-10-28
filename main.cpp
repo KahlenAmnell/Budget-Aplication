@@ -45,6 +45,10 @@ int main()
                 break;
             case '2':
                 budgetAplication.addExpense();
+                break;
+            case '6':
+                budgetAplication.changePassword();
+                break;
             case '7':
                 isLogged = false;
                 break;

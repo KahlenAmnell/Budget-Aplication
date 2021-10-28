@@ -269,4 +269,3 @@ float BudgetMeneger::enterAmount()
 
     return floatAmount;
 }
-

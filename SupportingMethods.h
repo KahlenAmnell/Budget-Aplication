@@ -15,6 +15,7 @@ public:
     static char enterSign();
     static int enterInteger();
     static string loadLine();
+    static string convertNumberToString(int number);
 
 private:
 

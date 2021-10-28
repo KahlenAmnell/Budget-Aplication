@@ -50,3 +50,11 @@ string SupportingMethods::loadLine()
     getline(cin, line);
     return line;
 }
+
+string SupportingMethods::convertNumberToString(int number)
+{
+    ostringstream ss;
+    ss << number;
+    string str = ss.str();
+    return str;
+}
