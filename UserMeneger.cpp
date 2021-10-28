@@ -1,8 +1,10 @@
 #include "UserMeneger.h"
 
-UserMeneger::UserMeneger()
+UserMeneger::UserMeneger(string nameOFFileWithUsers)
+: fileWithUsers(nameOFFileWithUsers)
 {
-
+    loggedUserID = 0;
+    users = fileWithUsers.loadUsersFromFile();
 }
 
 void UserMeneger::userRegistration()
@@ -10,7 +12,7 @@ void UserMeneger::userRegistration()
     User user = enterNewUserDetails();
 
     users.push_back(user);
-    //plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
+    fileWithUsers.addUserToFile(user);
 
     cout << endl << "Konto zalozono pomyslnie" << endl << endl;
     system("pause");

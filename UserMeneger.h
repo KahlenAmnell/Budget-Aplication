@@ -7,13 +7,14 @@
 
 #include "User.h"
 #include "SupportingMethods.h"
+#include "FileWithUsers.h"
 
 using namespace std;
 
 class UserMeneger
 {
 public:
-    UserMeneger();
+    UserMeneger(string nameOFFileWithUsers);
     void userRegistration();
     void userLogIn();
     bool isUserAlreadyLogged();
@@ -23,6 +24,7 @@ public:
 private:
     int loggedUserID;
     vector<User> users;
+    FileWithUsers fileWithUsers;
 
     User enterNewUserDetails();
     int getNewUserId();

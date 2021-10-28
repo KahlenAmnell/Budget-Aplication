@@ -1,7 +1,7 @@
 #include "BudgetAplication.h"
 
 BudgetAplication::BudgetAplication(string nameOFFileWithUsers, string nameOfFileWithIncome, string nameOfFileWithExpense)
-    :userMeneger()
+    :userMeneger(nameOFFileWithUsers)
 {
     budgetMeneger = NULL;
 }
