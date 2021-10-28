@@ -1,6 +1,5 @@
 #ifndef FINANCES_H
 #define FINANCES_H
-//#define _GLIBCXX_USE_CXX11_ABI 0
 
 #include <iostream>
 

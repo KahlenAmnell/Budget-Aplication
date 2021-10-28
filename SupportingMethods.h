@@ -1,6 +1,5 @@
 #ifndef SUPPORTINGMETHODS_H
 #define SUPPORTINGMETHODS_H
-//#define _GLIBCXX_USE_CXX11_ABI 0
 
 #include <iostream>
 #include <sstream>
@@ -16,6 +15,7 @@ public:
     static char enterSign();
     static int enterInteger();
     static string loadLine();
+    static string convertNumberToString(int number);
 
 private:
 

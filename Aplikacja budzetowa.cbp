@@ -38,6 +38,8 @@
 		<Unit filename="BudgetMeneger.h" />
 		<Unit filename="Expense.cpp" />
 		<Unit filename="Expense.h" />
+		<Unit filename="FileWithUsers.cpp" />
+		<Unit filename="FileWithUsers.h" />
 		<Unit filename="Finances.cpp" />
 		<Unit filename="Finances.h" />
 		<Unit filename="Incomes.cpp" />
@@ -50,6 +52,8 @@
 		<Unit filename="User.h" />
 		<Unit filename="UserMeneger.cpp" />
 		<Unit filename="UserMeneger.h" />
+		<Unit filename="XMLFile.cpp" />
+		<Unit filename="XMLFile.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

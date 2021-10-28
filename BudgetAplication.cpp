@@ -1,7 +1,7 @@
 #include "BudgetAplication.h"
 
 BudgetAplication::BudgetAplication(string nameOFFileWithUsers, string nameOfFileWithIncome, string nameOfFileWithExpense)
-    :userMeneger()
+    :userMeneger(nameOFFileWithUsers)
 {
     budgetMeneger = NULL;
 }
@@ -76,6 +76,19 @@ void BudgetAplication::addExpense()
     else
     {
         cout << "Aby dodac wydatek, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
+}
+
+void BudgetAplication::changePassword()
+{
+    if (userMeneger.isUserAlreadyLogged())
+    {
+        userMeneger.changingPasswordOfLoggedInUser();
+    }
+    else
+    {
+        cout << "Aby zmienic haslo, nalezy najpierw sie zalogowac" << endl;
         system("pause");
     }
 }

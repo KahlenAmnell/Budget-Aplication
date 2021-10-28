@@ -22,6 +22,7 @@ public:
     char chooseOptionFromUserMenu();
     void addIncomes();
     void addExpense();
+    void changePassword();
 
 private:
     UserMeneger userMeneger;
