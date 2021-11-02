@@ -15,9 +15,9 @@ void Finances::setAmount(float newAmount)
     amount = newAmount;
 }
 
-void Finances::setName(string newName)
+void Finances::setItem(string newName)
 {
-    name = newName;
+    item = newName;
 }
 
 int Finances::getUserId()
@@ -35,7 +35,7 @@ float Finances::getAmount()
     return amount;
 }
 
-string Finances::getName()
+string Finances::getItem()
 {
-    return name;
+    return item;
 }

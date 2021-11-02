@@ -11,18 +11,18 @@ public:
     void setUserId(int newUserId);
     void setDate(int newDate);
     void setAmount(float newAmount);
-    void setName(string newName);
+    void setItem(string newName);
 
     int getUserId();
     int getDate();
     float getAmount();
-    string getName();
+    string getItem();
 
 private:
     int userId;
     int date;
     float amount;
-    string name;
+    string item;
 };
 
 #endif // FINANCES_H

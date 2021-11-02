@@ -46,7 +46,7 @@ void BudgetMeneger::addIncomes()
 Incomes BudgetMeneger::enterDetailsOfNewIncome()
 {
     Incomes income;
-    string name;
+    string item;
 
     //get last income id from file
 
@@ -54,8 +54,8 @@ Incomes BudgetMeneger::enterDetailsOfNewIncome()
     income.setDate(setDateOfIncomeOrExpense());
 
     cout << "Podaj nazwe: ";
-    name = SupportingMethods::loadLine();
-    income.setName(name);
+    item = SupportingMethods::loadLine();
+    income.setItem(item);
     income.setAmount(enterAmount());
 
     return income;
@@ -80,7 +80,7 @@ void BudgetMeneger::addExpense()
 Expense BudgetMeneger::enterDetailsOfNewExpsense()
 {
     Expense expense;
-    string name;
+    string item;
 
     //get last expense id from file
 
@@ -88,8 +88,8 @@ Expense BudgetMeneger::enterDetailsOfNewExpsense()
     expense.setDate(setDateOfIncomeOrExpense());
 
     cout << "Podaj nazwe: ";
-    name = SupportingMethods::loadLine();
-    expense.setName(name);
+    item = SupportingMethods::loadLine();
+    expense.setItem(item);
     expense.setAmount(enterAmount());
 
     return expense;

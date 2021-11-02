@@ -14,6 +14,7 @@ class FileWithIncomes :public XmlFile
 public:
     FileWithIncomes(string nameOfFileWithIncomes);
     void addNewIncomeToFile(Incomes income);
+    vector<Incomes> loadIncomesFromFile(int loggedUserId);
 
 private:
     void startTheFile(CMarkup &xml);

@@ -20,7 +20,7 @@ public:
     void addExpense();
 
 private:
-    int LOGGED_USER_ID;
+    int LOGGED_USER_ID = 0;
     vector<Incomes> incomes;
     vector<Expense> expences;
     FileWithIncomes fileWithIncomes;
