@@ -12,9 +12,11 @@ using namespace std;
 class FileWithIncomes :public XmlFile
 {
 public:
+    FileWithIncomes(string nameOfFileWithIncomes);
+    void addNewIncomeToFile(Incomes income);
 
 private:
-
+    void startTheFile(CMarkup &xml);
 };
 
 #endif // FILEWITHINCOMES_H

@@ -1,5 +1,11 @@
 #include "BudgetMeneger.h"
 
+BudgetMeneger::BudgetMeneger(string nameOfFileWithIncomes)
+: fileWithIncomes(nameOfFileWithIncomes)
+{
+
+}
+
 char BudgetMeneger::chooseOptionFromUserMenu()
 {
     char choose;
@@ -32,7 +38,7 @@ void BudgetMeneger::addIncomes()
 
     incomes.push_back(income);
 
-    //saving to file
+    fileWithIncomes.addNewIncomeToFile(income);
 
     system("pause");
 }
