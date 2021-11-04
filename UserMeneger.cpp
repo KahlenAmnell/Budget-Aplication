@@ -131,3 +131,8 @@ void UserMeneger::changingPasswordOfLoggedInUser()
     }
    fileWithUsers.changePasswordInFile(loggedUserID, newPassword);
 }
+
+int UserMeneger::getLoggedUserId()
+{
+    return loggedUserID;
+}

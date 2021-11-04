@@ -1,9 +1,10 @@
 #include "BudgetMeneger.h"
 
-BudgetMeneger::BudgetMeneger(string nameOfFileWithIncomes)
-: fileWithIncomes(nameOfFileWithIncomes)
+BudgetMeneger::BudgetMeneger(string nameOfFileWithIncomes, int loggedUserId)
+: fileWithIncomes(nameOfFileWithIncomes), LOGGED_USER_ID(loggedUserId)
 {
-
+    fileWithIncomes.loadIncomesFromFile(LOGGED_USER_ID);
+    cout << incomes[0].getAmount() << endl;
 }
 
 char BudgetMeneger::chooseOptionFromUserMenu()
@@ -49,7 +50,7 @@ Incomes BudgetMeneger::enterDetailsOfNewIncome()
     string item;
 
     //get last income id from file
-
+    income.setIncomeId(12);
     income.setUserId(LOGGED_USER_ID);
     income.setDate(setDateOfIncomeOrExpense());
 
@@ -160,7 +161,7 @@ int BudgetMeneger::getTodayDate()
     monthStr = month;
     dayStr = day;
     todayDate = yearStr + monthStr + dayStr;
-    intTodayDate = SupportingMethods::convertStringToNumber(todayDate);
+    intTodayDate = SupportingMethods::convertStringToInt(todayDate);
     return intTodayDate;
 }
 
@@ -197,13 +198,13 @@ bool BudgetMeneger::isDateEnteredCorrectly(string userDate)
                 day += userDate[i];
         }
     }
-    intYear = SupportingMethods::convertStringToNumber(year);
+    intYear = SupportingMethods::convertStringToInt(year);
     if(intYear<2000)
         return false;
-    intMonth = SupportingMethods::convertStringToNumber(month);
+    intMonth = SupportingMethods::convertStringToInt(month);
     if(intMonth>12)
         return false;
-    intDay = SupportingMethods::convertStringToNumber(day);
+    intDay = SupportingMethods::convertStringToInt(day);
     if(intDay > howManyDaysInMonth(intMonth, intYear))
         return false;
 
@@ -221,7 +222,7 @@ int BudgetMeneger::convertDateFromStringToInteger(string userDate)
         if(userDate[i] != '-')
             dateWithoutDashes += userDate[i];
     }
-    date = SupportingMethods::convertStringToNumber(dateWithoutDashes);
+    date = SupportingMethods::convertStringToInt(dateWithoutDashes);
     return date;
 }
 

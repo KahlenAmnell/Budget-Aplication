@@ -20,6 +20,7 @@ public:
     bool isUserAlreadyLogged();
     int getLoggedUserID();
     void changingPasswordOfLoggedInUser();
+    int getLoggedUserId();
 
 private:
     int loggedUserID;

@@ -21,8 +21,8 @@ void FileWithIncomes::addNewIncomeToFile(Incomes income)
     xml.IntoElem();
     xml.AddElem("Income");
     xml.IntoElem();
-    xml.AddElem("UserId", income.getIncomeId());
-    xml.AddElem("IncomeId", income.getUserId());
+    xml.AddElem("UserId", income.getUserId());
+    xml.AddElem("IncomeId", income.getIncomeId());
     xml.AddElem("Date", income.getDate());
     xml.AddElem("Amount", income.getAmount());
     xml.AddElem("Item", income.getItem());
@@ -60,22 +60,22 @@ vector<Incomes> FileWithIncomes::loadIncomesFromFile(int loggedUserId)
         xml.IntoElem();
 
         xml.FindElem("UserId");
-        userId = SupportingMethods::convertStringToNumber(xml.GetData());
+        userId = SupportingMethods::convertStringToInt(xml.GetData());
 
         if(userId == loggedUserId)
         {
         income.setUserId(userId);
 
         xml.FindElem("IncomeId");
-        incomeId = SupportingMethods::convertStringToNumber(xml.GetData());
+        incomeId = SupportingMethods::convertStringToInt(xml.GetData());
         income.setIncomeId(incomeId);
 
         xml.FindElem("Date");
-        date = SupportingMethods::convertStringToNumber(xml.GetData());
+        date = SupportingMethods::convertStringToInt(xml.GetData());
         income.setDate(date);
 
         xml.FindElem("Amount");
-        amount = SupportingMethods::convertStringToNumber(xml.GetData());
+        amount = SupportingMethods::convertStringToFloat(xml.GetData());
         income.setAmount(amount);
 
         xml.FindElem("Item");

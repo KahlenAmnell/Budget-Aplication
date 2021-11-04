@@ -36,10 +36,12 @@ void BudgetAplication::userRegistration()
 
 bool BudgetAplication::userLogIn()
 {
+    int loggedUserId = 0;
     userMeneger.userLogIn();
     if (userMeneger.isUserAlreadyLogged())
     {
-        budgetMeneger = new BudgetMeneger(NAME_OF_FILE_WITH_INCOME);
+        loggedUserId = userMeneger.getLoggedUserID();
+        budgetMeneger = new BudgetMeneger(NAME_OF_FILE_WITH_INCOME, loggedUserId);
     }
     return userMeneger.isUserAlreadyLogged();
 }

@@ -14,13 +14,13 @@
 class BudgetMeneger
 {
 public:
-    BudgetMeneger(string nameOfFileWithIncomes);
+    BudgetMeneger(string nameOfFileWithIncomes, int loggedUserId);
     char chooseOptionFromUserMenu();
     void addIncomes();
     void addExpense();
 
 private:
-    int LOGGED_USER_ID = 0;
+    const int LOGGED_USER_ID = 0;
     vector<Incomes> incomes;
     vector<Expense> expences;
     FileWithIncomes fileWithIncomes;
