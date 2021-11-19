@@ -83,3 +83,26 @@ vector<Expense> FileWithExpense::loadExpenseFromFile(int loggedUserId)
     }
     return expenses;
 }
+
+int FileWithExpense::getLastExpanseId()
+{
+    int lastExpanseId = 0;
+    CMarkup xml;
+
+    bool fileExists = xml.Load( XML_FILE);
+
+    if(!fileExists)
+    {
+        return 0;
+    }
+
+    xml.FindElem(); //Expanse
+    xml.IntoElem();
+    while(xml.FindElem("Expanse"))
+    {}
+    xml.IntoElem();
+    xml.FindElem("ExpanseId");
+    lastExpanseId = SupportingMethods::convertStringToInt(xml.GetData());
+
+    return lastExpanseId;
+}

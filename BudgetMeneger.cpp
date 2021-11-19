@@ -83,8 +83,9 @@ Expense BudgetMeneger::enterDetailsOfNewExpsense()
     Expense expense;
     string item;
 
-    //get last expense id from file
+    int expenseId = fileWithExpense.getLastExpanseId() +1;
 
+    expense.setExpenseId(expenseId);
     expense.setUserId(LOGGED_USER_ID);
     expense.setDate(setDateOfIncomeOrExpense());
 
