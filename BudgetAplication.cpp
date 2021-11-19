@@ -1,7 +1,7 @@
 #include "BudgetAplication.h"
 
 BudgetAplication::BudgetAplication(string nameOFFileWithUsers, string nameOfFileWithIncome, string nameOfFileWithExpense)
-    :userMeneger(nameOFFileWithUsers), NAME_OF_FILE_WITH_INCOME(nameOfFileWithIncome)
+    :userMeneger(nameOFFileWithUsers), NAME_OF_FILE_WITH_INCOME(nameOfFileWithIncome), NAME_OF_FILE_WITH_EXPENSE(nameOfFileWithExpense)
 {
     budgetMeneger = NULL;
 }
@@ -41,7 +41,7 @@ bool BudgetAplication::userLogIn()
     if (userMeneger.isUserAlreadyLogged())
     {
         loggedUserId = userMeneger.getLoggedUserID();
-        budgetMeneger = new BudgetMeneger(NAME_OF_FILE_WITH_INCOME, loggedUserId);
+        budgetMeneger = new BudgetMeneger(NAME_OF_FILE_WITH_INCOME, NAME_OF_FILE_WITH_EXPENSE, loggedUserId);
     }
     return userMeneger.isUserAlreadyLogged();
 }

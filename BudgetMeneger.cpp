@@ -1,8 +1,9 @@
 #include "BudgetMeneger.h"
 
-BudgetMeneger::BudgetMeneger(string nameOfFileWithIncomes, int loggedUserId)
-: fileWithIncomes(nameOfFileWithIncomes), LOGGED_USER_ID(loggedUserId)
+BudgetMeneger::BudgetMeneger(string nameOfFileWithIncomes, string nameOfFileWithExpense, int loggedUserId)
+: fileWithIncomes(nameOfFileWithIncomes), fileWithExpense(nameOfFileWithExpense), LOGGED_USER_ID(loggedUserId)
 {
+    //do vectora
     fileWithIncomes.loadIncomesFromFile(LOGGED_USER_ID);
 }
 
@@ -71,7 +72,7 @@ void BudgetMeneger::addExpense()
 
     expences.push_back(expense);
 
-    //saving to file
+    fileWithExpense.addNewExpenseToFile(expense);
 
     system("pause");
 }

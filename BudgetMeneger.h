@@ -10,11 +10,12 @@
 #include "Incomes.h"
 #include "Expense.h"
 #include "FileWithIncomes.h"
+#include "FileWithExpense.h"
 
 class BudgetMeneger
 {
 public:
-    BudgetMeneger(string nameOfFileWithIncomes, int loggedUserId);
+    BudgetMeneger(string nameOfFileWithIncomes, string nameOfFileWithExpense, int loggedUserId);
     char chooseOptionFromUserMenu();
     void addIncomes();
     void addExpense();
@@ -24,6 +25,7 @@ private:
     vector<Incomes> incomes;
     vector<Expense> expences;
     FileWithIncomes fileWithIncomes;
+    FileWithExpense fileWithExpense;
 
     Incomes enterDetailsOfNewIncome();
     Expense enterDetailsOfNewExpsense();

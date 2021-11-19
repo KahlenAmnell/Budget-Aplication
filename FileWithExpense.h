@@ -13,7 +13,8 @@ using namespace std;
 class FileWithExpense :public XmlFile
 {
 public:
-
+    FileWithExpense(string nameOfFileWithExpense);
+    void addNewExpenseToFile(Expense expense);
 private:
 
 };
