@@ -5,17 +5,20 @@
 #include <sstream>
 #include <algorithm>
 #include <string>
+#include <math.h>
 
-using namespace std;
+//using namespace std;
 
 class SupportingMethods
 {
 public:
-    static int convertStringToNumber(string number);
+    static int convertStringToInt(std::string number);
+    static float convertStringToFloat(std::string number);
     static char enterSign();
     static int enterInteger();
-    static string loadLine();
-    static string convertNumberToString(int number);
+    static std::string loadLine();
+    static std::string convertNumberToString(int number);
+    static float roundFloat(float number);
 
 private:
 

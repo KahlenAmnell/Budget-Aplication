@@ -53,7 +53,7 @@ vector<User> FileWithUsers::loadUsersFromFile()
 
         xml.FindElem("UserId");
         stringUserId = xml.GetData();
-        intUserId = SupportingMethods::convertStringToNumber(stringUserId);
+        intUserId = SupportingMethods::convertStringToInt(stringUserId);
         user.setId(intUserId);
 
         xml.FindElem("Name");

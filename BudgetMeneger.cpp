@@ -1,5 +1,11 @@
 #include "BudgetMeneger.h"
 
+BudgetMeneger::BudgetMeneger(string nameOfFileWithIncomes, int loggedUserId)
+: fileWithIncomes(nameOfFileWithIncomes), LOGGED_USER_ID(loggedUserId)
+{
+    fileWithIncomes.loadIncomesFromFile(LOGGED_USER_ID);
+}
+
 char BudgetMeneger::chooseOptionFromUserMenu()
 {
     char choose;
@@ -32,7 +38,7 @@ void BudgetMeneger::addIncomes()
 
     incomes.push_back(income);
 
-    //saving to file
+    fileWithIncomes.addNewIncomeToFile(income);
 
     system("pause");
 }
@@ -40,16 +46,16 @@ void BudgetMeneger::addIncomes()
 Incomes BudgetMeneger::enterDetailsOfNewIncome()
 {
     Incomes income;
-    string name;
+    string item;
+    int incomeId = fileWithIncomes.getLastIncomeId() +1;
 
-    //get last income id from file
-
+    income.setIncomeId(incomeId);
     income.setUserId(LOGGED_USER_ID);
     income.setDate(setDateOfIncomeOrExpense());
 
     cout << "Podaj nazwe: ";
-    name = SupportingMethods::loadLine();
-    income.setName(name);
+    item = SupportingMethods::loadLine();
+    income.setItem(item);
     income.setAmount(enterAmount());
 
     return income;
@@ -74,7 +80,7 @@ void BudgetMeneger::addExpense()
 Expense BudgetMeneger::enterDetailsOfNewExpsense()
 {
     Expense expense;
-    string name;
+    string item;
 
     //get last expense id from file
 
@@ -82,8 +88,8 @@ Expense BudgetMeneger::enterDetailsOfNewExpsense()
     expense.setDate(setDateOfIncomeOrExpense());
 
     cout << "Podaj nazwe: ";
-    name = SupportingMethods::loadLine();
-    expense.setName(name);
+    item = SupportingMethods::loadLine();
+    expense.setItem(item);
     expense.setAmount(enterAmount());
 
     return expense;
@@ -154,7 +160,7 @@ int BudgetMeneger::getTodayDate()
     monthStr = month;
     dayStr = day;
     todayDate = yearStr + monthStr + dayStr;
-    intTodayDate = SupportingMethods::convertStringToNumber(todayDate);
+    intTodayDate = SupportingMethods::convertStringToInt(todayDate);
     return intTodayDate;
 }
 
@@ -191,13 +197,13 @@ bool BudgetMeneger::isDateEnteredCorrectly(string userDate)
                 day += userDate[i];
         }
     }
-    intYear = SupportingMethods::convertStringToNumber(year);
+    intYear = SupportingMethods::convertStringToInt(year);
     if(intYear<2000)
         return false;
-    intMonth = SupportingMethods::convertStringToNumber(month);
+    intMonth = SupportingMethods::convertStringToInt(month);
     if(intMonth>12)
         return false;
-    intDay = SupportingMethods::convertStringToNumber(day);
+    intDay = SupportingMethods::convertStringToInt(day);
     if(intDay > howManyDaysInMonth(intMonth, intYear))
         return false;
 
@@ -215,7 +221,7 @@ int BudgetMeneger::convertDateFromStringToInteger(string userDate)
         if(userDate[i] != '-')
             dateWithoutDashes += userDate[i];
     }
-    date = SupportingMethods::convertStringToNumber(dateWithoutDashes);
+    date = SupportingMethods::convertStringToInt(dateWithoutDashes);
     return date;
 }
 
