@@ -3,8 +3,8 @@
 BudgetMeneger::BudgetMeneger(string nameOfFileWithIncomes, string nameOfFileWithExpense, int loggedUserId)
 : fileWithIncomes(nameOfFileWithIncomes), fileWithExpense(nameOfFileWithExpense), LOGGED_USER_ID(loggedUserId)
 {
-    //do vectora
-    fileWithIncomes.loadIncomesFromFile(LOGGED_USER_ID);
+    incomes = fileWithIncomes.loadIncomesFromFile(LOGGED_USER_ID);
+    expences = fileWithExpense.loadExpenseFromFile(LOGGED_USER_ID);
 }
 
 char BudgetMeneger::chooseOptionFromUserMenu()

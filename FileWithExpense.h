@@ -15,6 +15,9 @@ class FileWithExpense :public XmlFile
 public:
     FileWithExpense(string nameOfFileWithExpense);
     void addNewExpenseToFile(Expense expense);
+    vector<Expense> loadExpenseFromFile(int loggedUserId);
+
+
 private:
 
 };

@@ -10,7 +10,7 @@ class XmlFile
 public:
     XmlFile(string nameOfXmlFile);
     void startTheFile(CMarkup &xml);
-  //  void startTheFile(bool &startTheFile);
+
 protected:
     const string XML_FILE;
 };
