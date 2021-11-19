@@ -46,6 +46,9 @@ int main()
             case '2':
                 budgetAplication.addExpense();
                 break;
+            case '3':
+                budgetAplication.balanceOfCurrentMonth();
+                break;
             case '6':
                 budgetAplication.changePassword();
                 break;
@@ -54,6 +57,7 @@ int main()
                 break;
             default:
                 cout << "Nie ma takiej opcji w menu. Spróbuj ponownie" << endl;
+                system("pause");
                 break;
             }
         }

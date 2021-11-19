@@ -1,7 +1,7 @@
 #include "BudgetMeneger.h"
 
 BudgetMeneger::BudgetMeneger(string nameOfFileWithIncomes, string nameOfFileWithExpense, int loggedUserId)
-: fileWithIncomes(nameOfFileWithIncomes), fileWithExpense(nameOfFileWithExpense), LOGGED_USER_ID(loggedUserId)
+    : fileWithIncomes(nameOfFileWithIncomes), fileWithExpense(nameOfFileWithExpense), LOGGED_USER_ID(loggedUserId)
 {
     incomes = fileWithIncomes.loadIncomesFromFile(LOGGED_USER_ID);
     expences = fileWithExpense.loadExpenseFromFile(LOGGED_USER_ID);
@@ -103,9 +103,9 @@ int BudgetMeneger::setDateOfIncomeOrExpense()
     string userDate = {""};
     char choose = {'0'};
 
-            cout << "Czy dotyczy dnia dzisiejszego? " << endl;
-        cout << "1. Tak" << endl;
-        cout << "2. Nie" << endl;
+    cout << "Czy dotyczy dnia dzisiejszego? " << endl;
+    cout << "1. Tak" << endl;
+    cout << "2. Nie" << endl;
 
     while((choose != '1') && (choose != '2'))
     {
@@ -124,14 +124,14 @@ int BudgetMeneger::setDateOfIncomeOrExpense()
                 cout << "Data: ";
                 userDate = SupportingMethods::loadLine();
                 if(isDateEnteredCorrectly(userDate) == false)
-                    {
-                        cout << "Podana data zostala wpisana nieprawidlowo. Podaj date w formacie: rrrr-mm-dd" << endl;
-                    }
+                {
+                    cout << "Podana data zostala wpisana nieprawidlowo. Podaj date w formacie: rrrr-mm-dd" << endl;
+                }
                 else
-                    {
-                        date = convertDateFromStringToInteger(userDate);
-                        break;
-                    }
+                {
+                    date = convertDateFromStringToInteger(userDate);
+                    break;
+                }
             }
             break;
         default:
@@ -276,4 +276,75 @@ float BudgetMeneger::enterAmount()
     floatAmount = stof(amount);
 
     return floatAmount;
+}
+
+void BudgetMeneger::sortIncomesByDate()
+{
+    sort( incomes.begin( ), incomes.end( ), [ ](Incomes& lhs, Incomes& rhs )
+    {
+        return lhs.getDate() < rhs.getDate();
+    });
+}
+
+void BudgetMeneger::sortExpencesByDate()
+{
+    sort( expences.begin( ), expences.end( ), [ ](Expense& lhs, Expense& rhs )
+    {
+        return lhs.getDate() < rhs.getDate();
+    });
+}
+
+void BudgetMeneger::balanceOfCurrentMonth()
+{
+    float sumOfIncomes = 0;
+    float sumOfExpense = 0;
+    float subtractOfIncomesAndExpense = 0;
+
+    sortIncomesByDate();
+    sortExpencesByDate();
+
+    system ("cls");
+    cout << " >>> BILANS Z BIEŻĄCEGO MIESIĄCA <<<" << endl << endl;
+    cout << " Przychody: " << endl;
+    for(int i=0; i<incomes.size(); i++)
+    {
+        if(getCurrentMonth() < incomes[i].getDate())
+        {
+            cout << incomes[i].getItem() << ": ";
+            cout << incomes[i].getAmount() << endl;
+            sumOfIncomes += incomes[i].getAmount();
+        }
+    }
+    cout << endl;
+
+    cout << " Wydatki: " << endl;
+    for(int i=0; i<expences.size(); i++)
+    {
+        if(getCurrentMonth() < expences[i].getDate())
+        {
+            cout << expences[i].getItem() << ": ";
+            cout << expences[i].getAmount() << endl;
+            sumOfExpense += expences[i].getAmount();
+        }
+    }
+    cout << endl;
+
+    subtractOfIncomesAndExpense = sumOfIncomes - sumOfExpense;
+
+    cout << "Suma przychodow: " << sumOfIncomes << endl;
+    cout << "Suma wydatków: " << sumOfExpense << endl << endl;
+    cout << "Różnica przychodów i wydatków: " << subtractOfIncomesAndExpense << endl;
+
+    system("pause");
+
+
+}
+
+int BudgetMeneger::getCurrentMonth()
+{
+    int todayDate = getTodayDate();
+    int day;
+    day = todayDate&100;
+    todayDate -= day;
+    return todayDate;
 }

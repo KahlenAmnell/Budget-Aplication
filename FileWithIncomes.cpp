@@ -83,6 +83,7 @@ vector<Incomes> FileWithIncomes::loadIncomesFromFile(int loggedUserId)
         }
         xml.OutOfElem();
     }
+
     return incomes;
 }
 

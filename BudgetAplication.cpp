@@ -77,7 +77,7 @@ void BudgetAplication::addExpense()
     }
     else
     {
-        cout << "Aby dodac wydatek, nalezy najpierw sie zalogowac" << endl;
+        cout << "Aby dodac wydatek, nalezy najpierw sie zalogowac." << endl;
         system("pause");
     }
 }
@@ -90,7 +90,20 @@ void BudgetAplication::changePassword()
     }
     else
     {
-        cout << "Aby zmienic haslo, nalezy najpierw sie zalogowac" << endl;
+        cout << "Aby zmienic haslo, nalezy najpierw sie zalogowac." << endl;
+        system("pause");
+    }
+}
+
+void BudgetAplication::balanceOfCurrentMonth()
+{
+    if (userMeneger.isUserAlreadyLogged())
+    {
+        budgetMeneger->balanceOfCurrentMonth();
+    }
+    else
+    {
+        cout << "Aby sprawdzic bilans z tego miesiaca nalezy najpierw sie zalogowac." << endl;
         system("pause");
     }
 }
