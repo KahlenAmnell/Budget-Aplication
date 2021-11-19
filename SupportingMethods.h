@@ -5,6 +5,7 @@
 #include <sstream>
 #include <algorithm>
 #include <string>
+#include <math.h>
 
 //using namespace std;
 
@@ -17,6 +18,7 @@ public:
     static int enterInteger();
     static std::string loadLine();
     static std::string convertNumberToString(int number);
+    static float roundFloat(float number);
 
 private:
 

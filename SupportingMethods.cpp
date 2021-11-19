@@ -66,3 +66,8 @@ std::string SupportingMethods::convertNumberToString(int number)
     std::string str = ss.str();
     return str;
 }
+
+float SupportingMethods::roundFloat(float number)
+{
+    return round(number*100)/100;
+}

@@ -4,7 +4,6 @@ BudgetMeneger::BudgetMeneger(string nameOfFileWithIncomes, int loggedUserId)
 : fileWithIncomes(nameOfFileWithIncomes), LOGGED_USER_ID(loggedUserId)
 {
     fileWithIncomes.loadIncomesFromFile(LOGGED_USER_ID);
-    cout << incomes[0].getAmount() << endl;
 }
 
 char BudgetMeneger::chooseOptionFromUserMenu()
@@ -48,9 +47,9 @@ Incomes BudgetMeneger::enterDetailsOfNewIncome()
 {
     Incomes income;
     string item;
+    int incomeId = fileWithIncomes.getLastIncomeId() +1;
 
-    //get last income id from file
-    income.setIncomeId(12);
+    income.setIncomeId(incomeId);
     income.setUserId(LOGGED_USER_ID);
     income.setDate(setDateOfIncomeOrExpense());
 

@@ -9,6 +9,7 @@ FileWithIncomes::FileWithIncomes(string nameOfFileWithIncomes)
 void FileWithIncomes::addNewIncomeToFile(Incomes income)
 {
     CMarkup xml;
+    string amount;
 
     bool fileExists = xml.Load(XML_FILE);
 
@@ -24,7 +25,8 @@ void FileWithIncomes::addNewIncomeToFile(Incomes income)
     xml.AddElem("UserId", income.getUserId());
     xml.AddElem("IncomeId", income.getIncomeId());
     xml.AddElem("Date", income.getDate());
-    xml.AddElem("Amount", income.getAmount());
+    amount = to_string(income.getAmount());
+    xml.AddElem("Amount", amount);
     xml.AddElem("Item", income.getItem());
 
     xml.Save(XML_FILE);
@@ -86,4 +88,27 @@ vector<Incomes> FileWithIncomes::loadIncomesFromFile(int loggedUserId)
         xml.OutOfElem();
     }
     return incomes;
+}
+
+int FileWithIncomes::getLastIncomeId()
+{
+    int lastIncomeId = 0;
+    CMarkup xml;
+
+    bool fileExists = xml.Load( XML_FILE);
+
+    if(!fileExists)
+    {
+        return 0;
+    }
+
+    xml.FindElem(); //Incomes
+    xml.IntoElem();
+    while(xml.FindElem("Income"))
+    {}
+    xml.IntoElem();
+    xml.FindElem("IncomeId");
+    lastIncomeId = SupportingMethods::convertStringToInt(xml.GetData());
+
+    return lastIncomeId;
 }

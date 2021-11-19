@@ -6,6 +6,7 @@
 #include "XMLFile.h"
 #include "SupportingMethods.h"
 #include <vector>
+#include <string>
 
 using namespace std;
 
@@ -15,6 +16,7 @@ public:
     FileWithIncomes(string nameOfFileWithIncomes);
     void addNewIncomeToFile(Incomes income);
     vector<Incomes> loadIncomesFromFile(int loggedUserId);
+    int getLastIncomeId();
 
 private:
     void startTheFile(CMarkup &xml);
