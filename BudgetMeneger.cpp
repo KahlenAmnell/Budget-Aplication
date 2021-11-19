@@ -1,9 +1,10 @@
 #include "BudgetMeneger.h"
 
-BudgetMeneger::BudgetMeneger(string nameOfFileWithIncomes, int loggedUserId)
-: fileWithIncomes(nameOfFileWithIncomes), LOGGED_USER_ID(loggedUserId)
+BudgetMeneger::BudgetMeneger(string nameOfFileWithIncomes, string nameOfFileWithExpense, int loggedUserId)
+: fileWithIncomes(nameOfFileWithIncomes), fileWithExpense(nameOfFileWithExpense), LOGGED_USER_ID(loggedUserId)
 {
-    fileWithIncomes.loadIncomesFromFile(LOGGED_USER_ID);
+    incomes = fileWithIncomes.loadIncomesFromFile(LOGGED_USER_ID);
+    expences = fileWithExpense.loadExpenseFromFile(LOGGED_USER_ID);
 }
 
 char BudgetMeneger::chooseOptionFromUserMenu()
@@ -71,7 +72,7 @@ void BudgetMeneger::addExpense()
 
     expences.push_back(expense);
 
-    //saving to file
+    fileWithExpense.addNewExpenseToFile(expense);
 
     system("pause");
 }
@@ -82,8 +83,9 @@ Expense BudgetMeneger::enterDetailsOfNewExpsense()
     Expense expense;
     string item;
 
-    //get last expense id from file
+    int expenseId = fileWithExpense.getLastExpanseId() +1;
 
+    expense.setExpenseId(expenseId);
     expense.setUserId(LOGGED_USER_ID);
     expense.setDate(setDateOfIncomeOrExpense());
 

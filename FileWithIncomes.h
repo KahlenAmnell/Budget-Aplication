@@ -19,7 +19,7 @@ public:
     int getLastIncomeId();
 
 private:
-    void startTheFile(CMarkup &xml);
+
 };
 
 #endif // FILEWITHINCOMES_H

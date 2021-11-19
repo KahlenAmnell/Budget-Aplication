@@ -32,11 +32,7 @@ void FileWithIncomes::addNewIncomeToFile(Incomes income)
     xml.Save(XML_FILE);
 }
 
-void FileWithIncomes::startTheFile(CMarkup &xml)
-{
-        xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-        xml.AddElem(XML_FILE);
-}
+
 
 vector<Incomes> FileWithIncomes::loadIncomesFromFile(int loggedUserId)
 {

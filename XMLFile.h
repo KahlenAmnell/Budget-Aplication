@@ -9,7 +9,8 @@ class XmlFile
 {
 public:
     XmlFile(string nameOfXmlFile);
-  //  void startTheFile(bool &startTheFile);
+    void startTheFile(CMarkup &xml);
+
 protected:
     const string XML_FILE;
 };
