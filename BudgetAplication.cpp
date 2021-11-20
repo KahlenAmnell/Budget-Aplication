@@ -107,3 +107,16 @@ void BudgetAplication::balanceOfCurrentMonth()
         system("pause");
     }
 }
+
+void BudgetAplication::balanceOfPreviousMonth()
+{
+    if (userMeneger.isUserAlreadyLogged())
+    {
+        budgetMeneger->balanceOfPreviousMonth();
+    }
+    else
+    {
+        cout << "Aby sprawdzic bilans z poprzedniego miesiaca nalezy najpierw sie zalogowac." << endl;
+        system("pause");
+    }
+}

@@ -49,6 +49,9 @@ int main()
             case '3':
                 budgetAplication.balanceOfCurrentMonth();
                 break;
+            case '4':
+                budgetAplication.balanceOfPreviousMonth();
+                break;
             case '6':
                 budgetAplication.changePassword();
                 break;

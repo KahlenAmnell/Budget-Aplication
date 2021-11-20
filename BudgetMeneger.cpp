@@ -336,15 +336,79 @@ void BudgetMeneger::balanceOfCurrentMonth()
     cout << "Różnica przychodów i wydatków: " << subtractOfIncomesAndExpense << endl;
 
     system("pause");
-
-
 }
 
 int BudgetMeneger::getCurrentMonth()
 {
     int todayDate = getTodayDate();
     int day;
-    day = todayDate&100;
+    day = todayDate%100;
     todayDate -= day;
     return todayDate;
+}
+
+void BudgetMeneger::balanceOfPreviousMonth()
+{
+    float sumOfIncomes = 0;
+    float sumOfExpense = 0;
+    float subtractOfIncomesAndExpense = 0;
+    int previousMonth = getPreviousMonth();
+    int currentMonth = getCurrentMonth();
+    int date = 0;
+
+    sortIncomesByDate();
+    sortExpencesByDate();
+
+    system ("cls");
+    cout << " >>> BILANS Z POPRZEDNIEGO MIESIĄCA <<<" << endl << endl;
+    cout << "Przychody: " << endl;
+    for(int i=0; i<incomes.size(); i++)
+    {
+        date = incomes[i].getDate();
+        if((date > previousMonth) && (date < currentMonth) )
+        {
+            cout << "- " << incomes[i].getItem() << ": ";
+            cout << "- " << incomes[i].getAmount() << endl;
+            sumOfIncomes += incomes[i].getAmount();
+        }
+    }
+    cout << endl;
+
+    cout << "Wydatki: " << endl;
+    for(int i=0; i<expences.size(); i++)
+    {
+        date = expences[i].getDate();
+        if( (date > previousMonth) && (date < currentMonth) )
+        {
+            cout << "- " << expences[i].getItem() << ": ";
+            cout << "- " <<expences[i].getAmount() << endl;
+            sumOfExpense += expences[i].getAmount();
+        }
+    }
+    cout << endl;
+
+    subtractOfIncomesAndExpense = sumOfIncomes - sumOfExpense;
+
+    cout << "Suma przychodow: " << sumOfIncomes << endl;
+    cout << "Suma wydatków: " << sumOfExpense << endl << endl;
+    cout << "Różnica przychodów i wydatków: " << subtractOfIncomesAndExpense << endl;
+
+    system("pause");
+}
+
+int BudgetMeneger::getPreviousMonth()
+{
+    int currentMonth = getCurrentMonth();
+    int numberOfCurrentMonth = (currentMonth%10000)/100;
+    int previousMonth = 0;
+
+    if(numberOfCurrentMonth == 1)
+    {
+        previousMonth = currentMonth - 8900;
+    }
+    else
+    {
+        previousMonth = currentMonth - 100;
+    }
+   return previousMonth;
 }

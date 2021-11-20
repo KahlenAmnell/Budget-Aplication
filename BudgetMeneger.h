@@ -21,6 +21,7 @@ public:
     void addIncomes();
     void addExpense();
     void balanceOfCurrentMonth();
+    void balanceOfPreviousMonth();
 
 private:
     const int LOGGED_USER_ID = 0;
@@ -41,6 +42,7 @@ private:
     void sortIncomesByDate();
     void sortExpencesByDate();
     int getCurrentMonth();
+    int getPreviousMonth();
 
 };
 
