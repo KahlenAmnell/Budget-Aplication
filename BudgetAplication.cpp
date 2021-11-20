@@ -120,3 +120,16 @@ void BudgetAplication::balanceOfPreviousMonth()
         system("pause");
     }
 }
+
+void BudgetAplication::balanceOfChosenPeriod()
+{
+    if (userMeneger.isUserAlreadyLogged())
+    {
+        budgetMeneger->balanceOfChosenPeriod();
+    }
+    else
+    {
+        cout << "Aby sprawdzic bilans z wybranego okresu nalezy najpierw sie zalogowac." << endl;
+        system("pause");
+    }
+}

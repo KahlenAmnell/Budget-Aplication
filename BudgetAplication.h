@@ -25,6 +25,7 @@ public:
     void changePassword();
     void balanceOfCurrentMonth();
     void balanceOfPreviousMonth();
+    void balanceOfChosenPeriod();
 
 private:
     UserMeneger userMeneger;
