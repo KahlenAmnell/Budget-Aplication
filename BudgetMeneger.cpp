@@ -442,7 +442,7 @@ void BudgetMeneger::balanceOfChosenPeriod()
     for(int i=0; i<incomes.size(); i++)
     {
         date = incomes[i].getDate();
-        if((date > olderDate) && (date < newerDate) )
+        if((date >= olderDate) && (date =< newerDate) )
         {
             cout << "- " << incomes[i].getItem() << ": ";
             cout << "- " << incomes[i].getAmount() << endl;
@@ -455,7 +455,7 @@ void BudgetMeneger::balanceOfChosenPeriod()
     for(int i=0; i<expences.size(); i++)
     {
         date = expences[i].getDate();
-        if( (date > olderDate) && (date < newerDate) )
+        if( (date >= olderDate) && (date =< newerDate) )
         {
             cout << "- " << expences[i].getItem() << ": ";
             cout << "- " <<expences[i].getAmount() << endl;
