@@ -77,7 +77,7 @@ void BudgetAplication::addExpense()
     }
     else
     {
-        cout << "Aby dodac wydatek, nalezy najpierw sie zalogowac" << endl;
+        cout << "Aby dodac wydatek, nalezy najpierw sie zalogowac." << endl;
         system("pause");
     }
 }
@@ -90,7 +90,46 @@ void BudgetAplication::changePassword()
     }
     else
     {
-        cout << "Aby zmienic haslo, nalezy najpierw sie zalogowac" << endl;
+        cout << "Aby zmienic haslo, nalezy najpierw sie zalogowac." << endl;
+        system("pause");
+    }
+}
+
+void BudgetAplication::balanceOfCurrentMonth()
+{
+    if (userMeneger.isUserAlreadyLogged())
+    {
+        budgetMeneger->balanceOfCurrentMonth();
+    }
+    else
+    {
+        cout << "Aby sprawdzic bilans z tego miesiaca nalezy najpierw sie zalogowac." << endl;
+        system("pause");
+    }
+}
+
+void BudgetAplication::balanceOfPreviousMonth()
+{
+    if (userMeneger.isUserAlreadyLogged())
+    {
+        budgetMeneger->balanceOfPreviousMonth();
+    }
+    else
+    {
+        cout << "Aby sprawdzic bilans z poprzedniego miesiaca nalezy najpierw sie zalogowac." << endl;
+        system("pause");
+    }
+}
+
+void BudgetAplication::balanceOfChosenPeriod()
+{
+    if (userMeneger.isUserAlreadyLogged())
+    {
+        budgetMeneger->balanceOfChosenPeriod();
+    }
+    else
+    {
+        cout << "Aby sprawdzic bilans z wybranego okresu nalezy najpierw sie zalogowac." << endl;
         system("pause");
     }
 }

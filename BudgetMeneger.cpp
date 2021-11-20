@@ -1,7 +1,7 @@
 #include "BudgetMeneger.h"
 
 BudgetMeneger::BudgetMeneger(string nameOfFileWithIncomes, string nameOfFileWithExpense, int loggedUserId)
-: fileWithIncomes(nameOfFileWithIncomes), fileWithExpense(nameOfFileWithExpense), LOGGED_USER_ID(loggedUserId)
+    : fileWithIncomes(nameOfFileWithIncomes), fileWithExpense(nameOfFileWithExpense), LOGGED_USER_ID(loggedUserId)
 {
     incomes = fileWithIncomes.loadIncomesFromFile(LOGGED_USER_ID);
     expences = fileWithExpense.loadExpenseFromFile(LOGGED_USER_ID);
@@ -100,12 +100,11 @@ Expense BudgetMeneger::enterDetailsOfNewExpsense()
 int BudgetMeneger::setDateOfIncomeOrExpense()
 {
     int date = 0;
-    string userDate = {""};
     char choose = {'0'};
 
-            cout << "Czy dotyczy dnia dzisiejszego? " << endl;
-        cout << "1. Tak" << endl;
-        cout << "2. Nie" << endl;
+    cout << "Czy dotyczy dnia dzisiejszego? " << endl;
+    cout << "1. Tak" << endl;
+    cout << "2. Nie" << endl;
 
     while((choose != '1') && (choose != '2'))
     {
@@ -118,25 +117,33 @@ int BudgetMeneger::setDateOfIncomeOrExpense()
             date = getTodayDate();
             break;
         case '2':
-            cout << "Podaj datę w formacie: rrrr-mm-dd" << endl;
-            while(true)
-            {
-                cout << "Data: ";
-                userDate = SupportingMethods::loadLine();
-                if(isDateEnteredCorrectly(userDate) == false)
-                    {
-                        cout << "Podana data zostala wpisana nieprawidlowo. Podaj date w formacie: rrrr-mm-dd" << endl;
-                    }
-                else
-                    {
-                        date = convertDateFromStringToInteger(userDate);
-                        break;
-                    }
-            }
+            date = setDate();
             break;
         default:
             cout << "Nie ma takiej opcji w menu. Spróbuj ponownie." << endl;
             system("pause");
+            break;
+        }
+    }
+    return date;
+}
+
+int BudgetMeneger::setDate()
+{
+    string userDate = {""};
+    int date = 0;
+    cout << "Podaj datę w formacie: rrrr-mm-dd" << endl;
+    while(true)
+    {
+        cout << "Data: ";
+        userDate = SupportingMethods::loadLine();
+        if(isDateEnteredCorrectly(userDate) == false)
+        {
+            cout << "Podana data zostala wpisana nieprawidlowo. Podaj date w formacie: rrrr-mm-dd" << endl;
+        }
+        else
+        {
+            date = convertDateFromStringToInteger(userDate);
             break;
         }
     }
@@ -276,4 +283,192 @@ float BudgetMeneger::enterAmount()
     floatAmount = stof(amount);
 
     return floatAmount;
+}
+
+void BudgetMeneger::sortIncomesByDate()
+{
+    sort( incomes.begin( ), incomes.end( ), [ ](Incomes& lhs, Incomes& rhs )
+    {
+        return lhs.getDate() < rhs.getDate();
+    });
+}
+
+void BudgetMeneger::sortExpencesByDate()
+{
+    sort( expences.begin( ), expences.end( ), [ ](Expense& lhs, Expense& rhs )
+    {
+        return lhs.getDate() < rhs.getDate();
+    });
+}
+
+void BudgetMeneger::balanceOfCurrentMonth()
+{
+    float sumOfIncomes = 0;
+    float sumOfExpense = 0;
+    float subtractOfIncomesAndExpense = 0;
+
+    sortIncomesByDate();
+    sortExpencesByDate();
+
+    system ("cls");
+    cout << " >>> BILANS Z BIEŻĄCEGO MIESIĄCA <<<" << endl << endl;
+    cout << " Przychody: " << endl;
+    for(int i=0; i<incomes.size(); i++)
+    {
+        if(getCurrentMonth() < incomes[i].getDate())
+        {
+            cout << "- " << incomes[i].getItem() << ": ";
+            cout << "- " << incomes[i].getAmount() << endl;
+            sumOfIncomes += incomes[i].getAmount();
+        }
+    }
+    cout << endl;
+
+    cout << " Wydatki: " << endl;
+    for(int i=0; i<expences.size(); i++)
+    {
+        if(getCurrentMonth() < expences[i].getDate())
+        {
+            cout << "- " << expences[i].getItem() << ": ";
+            cout << "- " << expences[i].getAmount() << endl;
+            sumOfExpense += expences[i].getAmount();
+        }
+    }
+    cout << endl;
+
+    subtractOfIncomesAndExpense = sumOfIncomes - sumOfExpense;
+
+    cout << "Suma przychodow: " << sumOfIncomes << endl;
+    cout << "Suma wydatków: " << sumOfExpense << endl << endl;
+    cout << "Różnica przychodów i wydatków: " << subtractOfIncomesAndExpense << endl;
+
+    system("pause");
+}
+
+int BudgetMeneger::getCurrentMonth()
+{
+    int todayDate = getTodayDate();
+    int day;
+    day = todayDate%100;
+    todayDate -= day;
+    return todayDate;
+}
+
+void BudgetMeneger::balanceOfPreviousMonth()
+{
+    float sumOfIncomes = 0;
+    float sumOfExpense = 0;
+    float subtractOfIncomesAndExpense = 0;
+    int previousMonth = getPreviousMonth();
+    int currentMonth = getCurrentMonth();
+    int date = 0;
+
+    sortIncomesByDate();
+    sortExpencesByDate();
+
+    system ("cls");
+    cout << " >>> BILANS Z POPRZEDNIEGO MIESIĄCA <<<" << endl << endl;
+    cout << "Przychody: " << endl;
+    for(int i=0; i<incomes.size(); i++)
+    {
+        date = incomes[i].getDate();
+        if((date > previousMonth) && (date < currentMonth) )
+        {
+            cout << "- " << incomes[i].getItem() << ": ";
+            cout << "- " << incomes[i].getAmount() << endl;
+            sumOfIncomes += incomes[i].getAmount();
+        }
+    }
+    cout << endl;
+
+    cout << "Wydatki: " << endl;
+    for(int i=0; i<expences.size(); i++)
+    {
+        date = expences[i].getDate();
+        if( (date > previousMonth) && (date < currentMonth) )
+        {
+            cout << "- " << expences[i].getItem() << ": ";
+            cout << "- " <<expences[i].getAmount() << endl;
+            sumOfExpense += expences[i].getAmount();
+        }
+    }
+    cout << endl;
+
+    subtractOfIncomesAndExpense = sumOfIncomes - sumOfExpense;
+
+    cout << "Suma przychodow: " << sumOfIncomes << endl;
+    cout << "Suma wydatków: " << sumOfExpense << endl << endl;
+    cout << "Różnica przychodów i wydatków: " << subtractOfIncomesAndExpense << endl;
+
+    system("pause");
+}
+
+int BudgetMeneger::getPreviousMonth()
+{
+    int currentMonth = getCurrentMonth();
+    int numberOfCurrentMonth = (currentMonth%10000)/100;
+    int previousMonth = 0;
+
+    if(numberOfCurrentMonth == 1)
+    {
+        previousMonth = currentMonth - 8900;
+    }
+    else
+    {
+        previousMonth = currentMonth - 100;
+    }
+    return previousMonth;
+}
+
+void BudgetMeneger::balanceOfChosenPeriod()
+{
+    float sumOfIncomes = 0;
+    float sumOfExpense = 0;
+    float subtractOfIncomesAndExpense = 0;
+    int olderDate = 0;
+    int newerDate = 0;
+    int date = 0;
+
+    sortIncomesByDate();
+    sortExpencesByDate();
+
+    system ("cls");
+    cout << " >>> BILANS Z WYBRANEGO OKRESU <<<" << endl << endl;
+    cout << endl << "Starsza data" << endl;
+    olderDate = setDate();
+    cout << endl << "Nowsza data" << endl;
+    newerDate = setDate();
+    cout << endl << "Przychody: " << endl;
+    for(int i=0; i<incomes.size(); i++)
+    {
+        date = incomes[i].getDate();
+        if((date >= olderDate) && (date =< newerDate) )
+        {
+            cout << "- " << incomes[i].getItem() << ": ";
+            cout << "- " << incomes[i].getAmount() << endl;
+            sumOfIncomes += incomes[i].getAmount();
+        }
+    }
+    cout << endl;
+
+    cout << "Wydatki: " << endl;
+    for(int i=0; i<expences.size(); i++)
+    {
+        date = expences[i].getDate();
+        if( (date >= olderDate) && (date =< newerDate) )
+        {
+            cout << "- " << expences[i].getItem() << ": ";
+            cout << "- " <<expences[i].getAmount() << endl;
+            sumOfExpense += expences[i].getAmount();
+        }
+    }
+    cout << endl;
+
+    subtractOfIncomesAndExpense = sumOfIncomes - sumOfExpense;
+
+    cout << "Suma przychodow: " << sumOfIncomes << endl;
+    cout << "Suma wydatków: " << sumOfExpense << endl << endl;
+    cout << "Różnica przychodów i wydatków: " << subtractOfIncomesAndExpense << endl;
+
+    system("pause");
 }

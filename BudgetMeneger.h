@@ -6,6 +6,7 @@
 #include <vector>
 #include <ctime>
 #include <string>
+#include <algorithm>
 #include "SupportingMethods.h"
 #include "Incomes.h"
 #include "Expense.h"
@@ -19,6 +20,9 @@ public:
     char chooseOptionFromUserMenu();
     void addIncomes();
     void addExpense();
+    void balanceOfCurrentMonth();
+    void balanceOfPreviousMonth();
+    void balanceOfChosenPeriod();
 
 private:
     const int LOGGED_USER_ID = 0;
@@ -36,6 +40,11 @@ private:
     int howManyDaysInMonth(int month, int year);
     bool isYearLeap(int year);
     float enterAmount();
+    void sortIncomesByDate();
+    void sortExpencesByDate();
+    int getCurrentMonth();
+    int getPreviousMonth();
+    int setDate();
 
 };
 

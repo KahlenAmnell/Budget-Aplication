@@ -23,6 +23,9 @@ public:
     void addIncomes();
     void addExpense();
     void changePassword();
+    void balanceOfCurrentMonth();
+    void balanceOfPreviousMonth();
+    void balanceOfChosenPeriod();
 
 private:
     UserMeneger userMeneger;
