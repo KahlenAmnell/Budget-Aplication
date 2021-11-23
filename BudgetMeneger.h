@@ -34,18 +34,18 @@ private:
     Incomes enterDetailsOfNewIncome();
     Expense enterDetailsOfNewExpsense();
     int setDateOfIncomeOrExpense();
-    int getTodayDate();
-    bool isDateEnteredCorrectly(string userDate);
-    int convertDateFromStringToInteger(string userDate);
-    int howManyDaysInMonth(int month, int year);
-    bool isYearLeap(int year);
+//    int getTodayDate();
+//    bool isDateEnteredCorrectly(string userDate);
+//    int convertDateFromStringToInteger(string userDate);
+//    int howManyDaysInMonth(int month, int year);
+//    bool isYearLeap(int year);
     float enterAmount();
     void sortIncomesByDate();
     void sortExpencesByDate();
     void displayIncome(Incomes &income);
-    int getCurrentMonth();
-    int getPreviousMonth();
-    int setDate();
+//    int getCurrentMonth();
+//    int getPreviousMonth();
+//    int setDate();
 
 };
 

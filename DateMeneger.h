@@ -9,7 +9,14 @@ using namespace std;
 class DateMeneger
 {
 public:
-
+    int getTodayDate();
+    bool isDateEnteredCorrectly(string userDate);
+    int convertDateFromStringToInteger(string userDate);
+    int howManyDaysInMonth(int month, int year);
+    bool isYearLeap(int year);
+    int getCurrentMonth();
+    int getPreviousMonth();
+    int setDate();
 private:
 
 };
