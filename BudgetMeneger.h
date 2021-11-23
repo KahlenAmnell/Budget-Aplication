@@ -42,6 +42,7 @@ private:
     float enterAmount();
     void sortIncomesByDate();
     void sortExpencesByDate();
+    void displayIncome(Incomes &income);
     int getCurrentMonth();
     int getPreviousMonth();
     int setDate();
