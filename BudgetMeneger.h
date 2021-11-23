@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include <vector>
-#include <ctime>
 #include <string>
 #include <algorithm>
 #include "SupportingMethods.h"
@@ -12,6 +11,7 @@
 #include "Expense.h"
 #include "FileWithIncomes.h"
 #include "FileWithExpense.h"
+#include "DateMeneger.h"
 
 class BudgetMeneger
 {
@@ -30,23 +30,15 @@ private:
     vector<Expense> expences;
     FileWithIncomes fileWithIncomes;
     FileWithExpense fileWithExpense;
+    DateMeneger dateMeneger;
 
     Incomes enterDetailsOfNewIncome();
     Expense enterDetailsOfNewExpsense();
     int setDateOfIncomeOrExpense();
-//    int getTodayDate();
-//    bool isDateEnteredCorrectly(string userDate);
-//    int convertDateFromStringToInteger(string userDate);
-//    int howManyDaysInMonth(int month, int year);
-//    bool isYearLeap(int year);
     float enterAmount();
     void sortIncomesByDate();
     void sortExpencesByDate();
     void displayIncome(Incomes &income);
-//    int getCurrentMonth();
-//    int getPreviousMonth();
-//    int setDate();
-
 };
 
 #endif // BUDGETMENEGER_H

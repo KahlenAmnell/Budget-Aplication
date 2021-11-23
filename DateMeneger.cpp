@@ -134,7 +134,7 @@ bool DateMeneger::isYearLeap(int year)
     return false;
 }
 
-int BudgetMeneger::getCurrentMonth()
+int DateMeneger::getCurrentMonth()
 {
     int todayDate = getTodayDate();
     int day;
@@ -143,7 +143,7 @@ int BudgetMeneger::getCurrentMonth()
     return todayDate;
 }
 
-int BudgetMeneger::getPreviousMonth()
+int DateMeneger::getPreviousMonth()
 {
     int currentMonth = getCurrentMonth();
     int numberOfCurrentMonth = (currentMonth%10000)/100;
